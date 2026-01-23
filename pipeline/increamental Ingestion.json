@@ -63,7 +63,8 @@
 							"folder": "cdc",
 							"file": "cdc.json"
 						}
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
@@ -74,7 +75,7 @@
 			"table": {
 				"type": "string"
 			},
-			"cdc_col ": {
+			"cdc_col": {
 				"type": "string"
 			}
 		},
