@@ -12,6 +12,7 @@
 						"value": "@pipeline().parameters.loop_input",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "AzureSqlToLake",
@@ -195,7 +196,7 @@
 											},
 											"enableLogging": false,
 											"storeSettings": {
-												"type": "AzureBlobStorageReadSettings",
+												"type": "AzureBlobFSReadSettings",
 												"recursive": true,
 												"enablePartitionDiscovery": false
 											}
@@ -260,7 +261,10 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"container": "bronze",
-													"folder": "cdc",
+													"folder": {
+														"value": "@{item().table}_cdc",
+														"type": "Expression"
+													},
 													"file": "empty.json"
 												}
 											}
@@ -292,6 +296,10 @@
 											"secureInput": false
 										},
 										"userProperties": [],
+										"linkedServiceName": {
+											"referenceName": "AzureSqlDatabase",
+											"type": "LinkedServiceReference"
+										},
 										"typeProperties": {
 											"scripts": [
 												{
