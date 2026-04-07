@@ -320,15 +320,14 @@
 				}
 			},
 			{
-				"name": "Alerts ",
+				"name": "Alert",
 				"type": "WebActivity",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
 						"dependencyConditions": [
-							"Failed"
+							"Failed",
+							"Succeeded"
 						]
 					}
 				],
@@ -342,6 +341,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"method": "POST",
+					"url": "https://prod-25.northcentralus.logic.azure.com:443/workflows/243445ad2b674941bf8d25253198fa21/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=WPUoUqPQNnJFlZmbRvfW9ldkYvLH99XgSCFXt7o1sf4",
 					"body": {
 						"value": "{\n    \"pipeline_name\":\"@{pipeline().Pipeline}\",\n    \"pipeline_runId\":\"@{pipeline().RunId}\"\n}",
 						"type": "Expression"
