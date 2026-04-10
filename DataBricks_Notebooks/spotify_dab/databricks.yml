@@ -1,0 +1,43 @@
+ 
+bundle:
+  name: spotify_dab
+  uuid: 1bfbdc68-0022-401f-9c37-0d776ffab337
+
+include:
+  - resources/*.yml
+
+artifacts:
+  python_artifact:
+    type: whl
+    build: uv build --wheel
+
+# Variable declarations. These variables are assigned in the dev/prod targets below.
+variables:
+  catalog:
+    description: The catalog to use
+  schema:
+    description: The schema to use
+
+targets:
+  dev:
+   
+    mode: development
+    default: true
+    workspace:
+      host: http://adb-7405615004312685.5.azuredatabricks.net
+      root_path: /Workspace/Users/azuruchi234@gmail.com/.bundle/my-bundle/target
+    presets:
+      sourse_linked_deployment: false
+       
+    
+  prod:
+    mode: production
+    workspace:
+      host: http://127.0.0.1:7073
+       root_path: /Workspace/Users/azuruchi234@gmail.com/Prod/PROD/.bundle/my-bundle/$prod
+    variables:
+      catalog: spotifyprojectdatabricks
+      schema: prod
+    permissions:
+      - user_name: azuruchi234@gmail.com
+        level: CAN_MANAGE
