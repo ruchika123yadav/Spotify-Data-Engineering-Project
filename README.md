@@ -38,6 +38,8 @@ This project implements a scalable **Spotify Data Lakehouse** on Microsoft Azure
 * **Jinja2 Templating:** Developed a metadata-driven notebook using **Jinja2** to generate dynamic SQL for complex multi-table joins, making the code completely reusable for new dimensions.
 * **DLT & SCD Type 2:** Built a **Gold Pipeline** using Spark Declarative Pipelines (DLT) to implement **Slowly Changing Dimension (Type 2)** for the `dimUser` table to track historical changes.
 * **Data Quality (Expectations):** Applied **DLT Expectations** (Data quality constraints) on source tables to ensure only clean data reaches the analytical layer.
+---
+![alt text](image-1.png)
 
 ---
 
